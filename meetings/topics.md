@@ -13,16 +13,18 @@
 2. Software installation
 3. Introduction to SQL
 4. Readings and exercises
-   1. W3Schools: *SQL Intro* to *SQL Null Values*, *SQL Min and Max* to *SQL Aliases*
-   2. SQL Zoo: tutorials 0 to 3
-   3. SQLBolt: lessons 1 to 5
+    1. W3Schools: *SQL Intro* to *SQL Null Values*, *SQL Min and Max* to *SQL Aliases*
+    2. SQL Zoo: tutorials 0 to 3
+    3. SQLBolt: lessons 1 to 5
 
 ## 2022-01-25
 
 1. Joins and grouping
 2. Readings and exercises
-   1. at the end of the file `04b_grouping.md`
-   2. 
+    1. at the end of the file `04b_grouping.md`
+    2. W3Schools: 
+    3. SQL Zoo: 
+    4. SQLBolt:
 
 ## 2022-01-26
 
