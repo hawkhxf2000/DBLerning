@@ -64,7 +64,7 @@ WHERE name = 'John Doe';
 
 2. Find the contacts without a phone number
 
-  ```postgresql
+```postgresql
 SELECT *
 FROM contact
 WHERE phone IS NULL;
