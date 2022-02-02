@@ -40,16 +40,33 @@ from student
 intersect
 select email
 from instructor;
+-- find the same elements in the column in two tables.
 ```
 
 3. Find courses which have never been offered
-
+- method 1
 ```postgresql
 select cid
 from course
-except
+except                                
 select cid
 from offering;
+-- except = where xxx not in，但是如果使用except的话，两个select后面的列名必须一致（这里就是cid)
+```
+- method 2
+```postgresql
+
+select cid from course c
+where cid not in (select o.cid from offering o);
+-- 这里的select 后面的列可以为任意列，但是not in要慎用，因为在后期输入数据时，非常容易出现选择项中出现null的情况，这时继续使用
+-- 这个sql查询就会出现问题，除非这一项为not null
+```
+- method 3
+```postgresql
+select c.cid from course c 
+left join offering o on c.cid = o.cid
+where o.cid is null;
+--left join是速度最快，而且最保险的sql查询
 ```
 
 4. Find students not enrolled in any course
@@ -114,6 +131,8 @@ where email like '%@example.com'
              left join offering o on c.cid = o.cid
     group by c.cid
     having count(o.oid) > 3;
+   -- 一般情况下，group by 的columns需要与select里的columns相同，除非select里的columns都在同一个table中，而group by 使用这个
+   -- table的主键
     ```
 
     ```postgresql
@@ -327,6 +346,7 @@ where cid = 2
 select *
 from course
 where cid not in (2, 3, 4, null); 
+-- 如果null在选择项中，那么不会出任何结果，因此在使用not in时，一定要保证not in的选择项中一定不能有null的存在
 ```
 
 - We get nothing
