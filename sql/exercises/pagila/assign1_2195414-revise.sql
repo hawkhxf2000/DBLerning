@@ -90,12 +90,12 @@ group by f.title
 having title = 'CONNECTION MICROCOSMOS';
 
 -- 12. Find the films that have never been rented. Give the `film_id` and title of each such film.
-select f.film_id, title, i.inventory_id, rental_id
+select f.film_id, title
 from film f
          left join inventory i on f.film_id = i.film_id
          left join rental r on i.inventory_id = r.inventory_id
-where i.inventory_id is null
-  and rental_id is null;
+group by f.film_id
+having count(r.rental_id) = 0;
 
 -- 13. Find the number of times each film has been rented. Give the `film_id` and title of each such
 -- film in addition to the number of rentals. Sort in decreasing order of the number of rentals. Don't
